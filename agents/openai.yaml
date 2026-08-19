@@ -1,0 +1,4 @@
+interface:
+  display_name: "高保真网站复刻"
+  short_description: "Evidence-led workflow for faithful site replication"
+  default_prompt: "Use $replicate-websites-faithfully to reproduce this website faithfully, including its content, responsive architecture, interactions, and motion."
