@@ -1,129 +1,111 @@
 ---
 name: replicate-websites-faithfully
-description: Reproduce an existing website with evidence-backed fidelity across content, architecture, responsive layout, interactions, and motion. Use when the user asks to 复刻网站, 完整复刻, 像素级还原, clone a site, match a reference URL, preserve all interactions or animations, or build a faithful local baseline before replacing it with their own portfolio content.
+description: "Reproduce a reference website by following the complete Content Architecture replication case study: source forensics, exact content capture, layout reconstruction, responsive architecture, ASCII image conversion, interactive character-ring motion, micro-interactions, performance correction, and browser acceptance testing. Use when the user asks to 复刻网站, 完整复刻, 像素级还原, clone a reference URL, preserve its interactions and motion, or build a faithful baseline before replacing content."
 ---
 
 # Replicate Websites Faithfully
 
-Treat “replicate” as a fidelity requirement, not a style reference. Reconstruct the observable system before personalizing it.
+Use the Content Architecture project as the worked method. This skill records what actually succeeded, what failed first, how the source was investigated, how each effect was rebuilt, and where the final local implementation still differs from the reference.
 
-## Establish the replication contract
+Treat “replicate” as a fidelity contract. Do not reinterpret it as “make something with a similar style.”
 
-Infer the highest reasonable fidelity from the request:
+Keep two layers distinct:
 
-- **Faithful replication**: match content, section order, proportions, responsive behavior, interactions, and signature motion.
-- **Adaptation**: preserve the design language while replacing structure or behavior.
-- **Personalization**: start from a faithful baseline, then replace content and identity.
+- **Reusable layer** — the contract, evidence workflow, five maps, implementation order, validation, and fidelity reporting in this file.
+- **Worked-case layer** — the exact Content Architecture page structure, runtime discoveries, formulas, component behavior, performance corrections, and known gaps in `references/`.
 
-When the user says “直接复刻”, “完整复刻”, or equivalent, default to faithful replication. Do not silently downgrade it to an adaptation.
+## Read the case in the right order
 
-Keep work within accessible, authorized sources. Do not bypass authentication, paywalls, safety interstitials, or technical access controls. Record third-party fonts, images, video, and code that require replacement or licensing before public release.
+1. Read [references/case-study.md](references/case-study.md) before planning or coding. It explains the chronology, the initial failure, and the corrected workflow.
+2. Read [references/source-forensics.md](references/source-forensics.md) when a reference URL or opaque animation must be investigated.
+3. Read [references/implementation-blueprint.md](references/implementation-blueprint.md) before implementing layout, ASCII visuals, motion, or interactions.
+4. Read [references/verification-and-gaps.md](references/verification-and-gaps.md) before claiming fidelity or handing work back.
 
-## Execute in this order
+These files form one case-study playbook. Do not use only the generic checklist while skipping the implementation evidence.
 
-### 1. Capture evidence before coding
+## Preserve the replication contract
 
-Inspect the live page at representative desktop and mobile widths. Capture:
+Classify the request:
 
-- Section order, copy, links, images, and forms
-- Grid, spacing, type scale, colors, borders, and layering
-- Sticky, fixed, overflow, and scroll behavior
-- Hover, focus, click, drag, hold, release, and scroll states
-- Entrance, transition, and idle animation timing
-- Canvas, WebGL, SVG, video, shader, or particle-driven regions
-- Responsive changes rather than simple scaled screenshots
+- **Faithful baseline**: copy observable content, order, proportions, responsive behavior, interactions, and signature motion.
+- **Personalized derivative**: first establish the faithful baseline, then replace copy, identity, media, and destinations.
+- **Style adaptation**: borrow the visual language without claiming fidelity.
 
-Save or inventory publicly delivered HTML, CSS, scripts, fonts, and assets when useful. Read [references/evidence-and-motion.md](references/evidence-and-motion.md) before analyzing a signature effect or opaque runtime bundle.
+When the user says “直接复刻” or “先完全复刻”, choose the faithful baseline. Use mocks only for unavailable or unsuitable assets, centralize them, and disclose them.
 
-### 2. Build a replication map
+Stay within accessible, authorized sources. Do not bypass authentication, paywalls, safety interstitials, or technical controls. Flag third-party assets and copy that need permission or replacement before public release.
 
-Create a short internal map with five layers:
+## Follow the corrected workflow
 
-1. **Content** — exact copy, labels, media, and destinations
-2. **Structure** — sections, components, hierarchy, and reusable patterns
-3. **Visual system** — tokens, grids, typography, breakpoints, and surfaces
-4. **Behavior** — navigation, accordions, carousels, forms, cursor states
-5. **Motion** — state machine, triggers, timing, easing, rendering technique
+### 1. Capture before interpreting
 
-Identify the three highest-risk signature elements. Prove their implementation approach early. A generic page shell is not evidence that the difficult parts are solved.
+Inspect the live site at desktop and mobile widths. Record the complete section order, exact copy, images, links, grid, type, surfaces, fixed and sticky regions, responsive changes, and every visible interaction state.
 
-### 3. Scaffold the native architecture
+Archive or inventory publicly delivered HTML, CSS, JavaScript, fonts, and images when useful. Search concrete labels and component clues before inventing an effect.
 
-Use the project’s existing framework and conventions unless the user requests a migration. Establish:
+### 2. Build five maps
 
-- Global tokens and fonts
-- Page shell, navigation, and section containers
-- Reusable content models
-- Asset and mock-data boundaries
-- Responsive breakpoints
-- Reduced-motion behavior
+Create working maps for:
 
-Preserve unrelated user changes. Keep copied or temporary source evidence outside production assets.
+1. Content and destinations
+2. Section and component hierarchy
+3. Visual tokens and layout geometry
+4. Interaction states and event triggers
+5. Motion variables, timing, and rendering technique
 
-### 4. Reconstruct signature behavior from evidence
+Mark the three most distinctive or technically risky elements. In this case they were the interactive hero rings, image-to-ASCII showcase transition, and full-screen ASCII entrance curtain.
 
-Do not replace a distinctive effect with a visually adjacent generic algorithm.
+### 3. Prove signature effects early
 
-For each signature effect:
+Do not finish the generic page shell before testing whether the signature effect can be matched. Inspect the reference mechanism, derive its state model, build a minimal proof at the target viewport, and compare it with the reference.
 
-1. Observe the rest, hover, active, held, released, scrolling, and resized states.
-2. Identify the rendering model: DOM/CSS, SVG, Canvas 2D, WebGL, video, or a combination.
-3. Inspect public runtime modules, asset names, shader strings, data attributes, and event labels when visual observation is insufficient.
-4. Derive the state variables, geometry, timing, and input mapping.
-5. Implement a minimal proof at the target viewport.
-6. Compare it with the reference before integrating it into the whole page.
+For the Content Architecture hero, the decisive correction was discovering that the visual was 30 instanced character rings driven by a WebGL shader—not a procedural wood-grain texture. Rebuilding a visually adjacent noise field was therefore a failed approach.
 
-Prefer matching the underlying mechanism when it materially determines the result. For thousands of independently moving glyphs or particles, use an appropriate GPU or batched rendering approach rather than an expensive per-item DOM or Canvas loop.
+### 4. Implement the page system
 
-### 5. Implement from high risk to low risk
+Establish tokens, fonts, page shell, responsive grid, repeated frames, data collections, and mock boundaries. Then integrate signature effects, secondary interactions, responsive variants, accessibility, and performance controls.
 
-Use this sequence:
+Prefer the project’s existing framework unless the user requests a migration. Preserve unrelated changes.
 
-1. Global visual system and page geometry
-2. Signature hero or transition proof
-3. Static content sections and repeated components
-4. Secondary interactions and motion
-5. Responsive variants
-6. Accessibility and reduced motion
-7. Performance refinement
-8. Personalization only after the faithful baseline is accepted
+### 5. Validate behavior, not just screenshots
 
-Use mock assets only when the real asset is unavailable or should not be reused. Label mocks in code and centralize them so the user can replace them later.
+Reload the local app and test rest, hover, press, charged, release, scroll, resize, focus, and reduced-motion states where applicable. Compare geometry at matching viewports. Check console errors, missing assets, animation load, keyboard behavior, and responsive clipping.
 
-### 6. Validate in the browser
+Never call a dynamic effect complete from one still image.
 
-Reload the local app after relevant changes. Verify actual pixels and input behavior, not only compilation.
+### 6. Report the truth
 
-Read [references/acceptance-matrix.md](references/acceptance-matrix.md) and cover every applicable row. At minimum, check:
+Separate:
 
-- Desktop and mobile screenshots at the same scroll positions as the reference
-- Navigation, links, accordions, and forms
-- Hover, hold, release, drag, and scroll-driven states
-- Responsive reflow and clipping
-- Console errors and failed assets
-- Animation smoothness and CPU/GPU load
-- Keyboard focus, labels, contrast, and reduced motion
+- Reference mechanism
+- Local implementation
+- Performance-driven compromises
+- Unverified behavior
+- Mock assets and links
+- Licensing-sensitive content
 
-Use overlays, side-by-side screenshots, or image diffs for geometry. Use frame-by-frame observation for motion. Never call a signature effect complete from one still screenshot.
+Do not call a Canvas fallback “identical” when the reference uses WebGL instancing and the observable behavior differs.
 
-### 7. Report fidelity honestly
+## Core lessons from this replication
 
-Finish with:
+- Start from evidence, not visual memory.
+- Exact content and section order do not compensate for a missing signature interaction.
+- Analyze difficult motion before polishing low-risk sections.
+- Search public runtime chunks using visible UI labels and module identifiers.
+- Translate minified code into geometry, state, timing, and input rules; do not paste opaque source.
+- Match the underlying mechanism when it determines density, orientation, smoothness, or input response.
+- Batch Canvas primitives, cap DPR, pause hidden work, and consider WebGL when item counts grow.
+- Keep desktop and mobile as distinct layout states, not merely scaled screenshots.
+- Treat user feedback about a missing effect as a failed acceptance criterion and return to evidence gathering.
 
-- What matches
-- What remains approximate
-- Which assets or links are mocked
-- Which viewports and interactions were tested
-- Any licensing-sensitive assets to replace before publication
+## Completion conditions
 
-Do not claim “fully replicated” while a defining interaction is missing or implemented with a materially different mechanism. Treat user feedback as a failed acceptance criterion, investigate the cause, and update the replication map before patching.
+Complete the task only when:
 
-## Guardrails
-
-- Do not start from memory when the reference is available.
-- Do not conflate visual similarity with behavioral equivalence.
-- Do not postpone every difficult animation until the end.
-- Do not scrape protected or private content.
-- Do not publish the reference site’s proprietary assets without authorization.
-- Do not replace exact source content with invented copy unless the user asks for adaptation.
-- Do not optimize away an interaction before measuring its fidelity and performance.
+- Section content and ordering are accounted for.
+- Desktop and mobile layouts have been checked.
+- Signature effects have mechanism notes and interaction evidence.
+- Links, forms, accordions, tabs, carousels, and cursor states have been exercised.
+- Runtime and asset errors are clear.
+- Known differences are reported explicitly.
+- The user can distinguish real content from mocks and replaceable assets.
